@@ -1,0 +1,16 @@
+{% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+{% endif %}
+
+{% for page in paginator.page_range %}
+    {% if page == page_obj.number %}
+        <li class="page-item active"><a class="page-link" href="?page={{ page }}&sorted={{ request.GET.sorted }}&size={{ request.GET.size }}">{{ page }}</a></li>
+
+    {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ page }}&sorted={{ request.GET.sorted }}&size={{ request.GET.size }}">{{ page }}</a></li>
+    {% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Next</a></li>
+{% endif %}

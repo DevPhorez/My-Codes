@@ -1,0 +1,38 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" style="text-align: right">Sorting</button>
+    <div class="dropdown-menu dropdown-menu-right">
+        {% if request.GET.max is None and request.GET.min is None and request.GET.color is None and request.GET.size is None and request.GET.sorted is not None %}
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest">Cheapest</a>
+        {% elif  request.GET.max is not None and request.GET.min is not None and request.GET.color is not None and request.GET.sorted is not None %}
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest&color={{ request.GET.color }}&min={{ request.GET.min }}&max={{ request.GET.max }}">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity&color={{ request.GET.color }}&min={{ request.GET.min }}&max={{ request.GET.max }}">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest&color={{ request.GET.color }}&min={{ request.GET.min }}&max={{ request.GET.max }}">Cheapest</a>
+        {% elif  request.GET.max is not None and request.GET.min is not None and request.GET.size is not None and request.GET.sorted is not None %}
+                <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest&size={{ request.GET.size }}&min={{ request.GET.min }}&max={{ request.GET.max }}">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity&size={{ request.GET.size }}&min={{ request.GET.min }}&max={{ request.GET.max }}">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest&size={{ request.GET.size }}&min={{ request.GET.min }}&max={{ request.GET.max }}">Cheapest</a>
+        {% elif request.GET.color is not None and request.GET.size is not None and request.GET.sorted is not None %}
+                <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest&color={{ request.GET.color }}&size={{ request.GET.size }}">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity&color={{ request.GET.color }}&size={{ request.GET.size }}">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest&color={{ request.GET.color }}&size={{ request.GET.size }}">Cheapest</a>
+        {% elif  request.GET.max is not None and request.GET.min is not None and request.GET.sorted is not None %}
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest&min={{ request.GET.min }}&max={{ request.GET.max }}">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity&min={{ request.GET.min }}&max={{ request.GET.max }}">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest&min={{ request.GET.min }}&max={{ request.GET.max }}">Cheapest</a>
+        {% elif  request.GET.color and request.GET.sorted is not None %}
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest&color={{ request.GET.color }}">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity&color={{ request.GET.color }}">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest&color={{ request.GET.color }}">Cheapest</a>
+        {% elif  request.GET.size and request.GET.sorted is not None %}
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest&size={{ request.GET.size }}">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity&size={{ request.GET.size }}">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest&size={{ request.GET.size }}">Cheapest</a>
+        {% else %}
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=latest">Latest</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=popularity">Popularity</a>
+            <a class="dropdown-item" href="/products/search?q={{ request.GET.q }}&page={{ request.GET.page }}&sorted=cheapest">Cheapest</a>
+        {% endif %}
+    </div>
+</div>
